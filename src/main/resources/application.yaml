@@ -1,0 +1,4 @@
+application:
+  api:
+    base:
+      url: /login
