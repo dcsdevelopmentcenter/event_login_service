@@ -10,15 +10,13 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "master", "dev" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "master", "dev" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 18
@@ -27,5 +25,7 @@ jobs:
           java-version: '18'
           distribution: 'temurin'
           cache: maven
+      - name: Run Tests
+        run: mvn test -f pom.xml
       - name: Build with Maven
         run: mvn -B package --file pom.xml
